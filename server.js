@@ -3,6 +3,8 @@ const express = require('express');
 const TelegramBot = require('node-telegram-bot-api');
 const path = require('path');
 
+console.log('🚀 Starting Asragram server...');
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -11,6 +13,7 @@ console.log('🔍 Environment Variables Check:');
 console.log('BOT_TOKEN:', process.env.BOT_TOKEN ? '✅ Set' : '❌ Not set');
 console.log('WEB_APP_URL:', process.env.WEB_APP_URL ? '✅ Set' : '❌ Not set');
 console.log('GOOGLE_AI_API_KEY:', process.env.GOOGLE_AI_API_KEY ? '✅ Set' : '❌ Not set');
+console.log('PORT:', PORT);
 
 // Telegram Bot Token
 const BOT_TOKEN = process.env.BOT_TOKEN;
@@ -89,6 +92,7 @@ app.get('/health', (req, res) => {
 
 // Start server
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-  console.log(`Web App URL: ${WEB_APP_URL}`);
+  console.log(`✅ Server is running on port ${PORT}`);
+  console.log(`🌐 Web App URL: ${WEB_APP_URL}`);
+  console.log(`🤖 Bot Token: ${BOT_TOKEN ? 'Set' : 'Not set'}`);
 });
