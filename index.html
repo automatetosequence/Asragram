@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asragram</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Baking with Gemini</h1>
+        
+        <div class="image-gallery">
+            <div class="image-item" data-index="0" data-description="Cupcake">
+                <img src="assets/images/baked_goods_1.jpg" alt="Cupcake">
+            </div>
+            <div class="image-item" data-index="1" data-description="Cookies">
+                <img src="assets/images/baked_goods_2.jpg" alt="Cookies">
+            </div>
+            <div class="image-item" data-index="2" data-description="Cake">
+                <img src="assets/images/baked_goods_3.jpg" alt="Cake">
+            </div>
+        </div>
+
+        <div class="input-section">
+            <div class="input-wrapper">
+                <input type="text" id="promptInput" placeholder="Provide a recipe for the baked goods in the image" value="Provide a recipe for the baked goods in the image">
+                <button id="goButton" disabled>Go</button>
+            </div>
+        </div>
+
+        <div class="result-section">
+            <div id="loadingIndicator" class="loading hidden">
+                <div class="spinner"></div>
+                <p>Loading...</p>
+            </div>
+            <div id="resultText" class="result-text">(Results will appear here)</div>
+        </div>
+    </div>
+
+    <script type="module" src="app.js"></script>
+</body>
+</html>
