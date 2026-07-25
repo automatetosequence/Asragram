@@ -18,14 +18,14 @@ app.use(express.static(path.join(__dirname)));
 app.use(express.json());
 
 // Webhook endpoint
-app.post(`/bot${BOT_TOKEN}`, (req, res) => {
+app.post(`/bot/${BOT_TOKEN}`, (req, res) => {
   bot.processUpdate(req.body);
   res.sendStatus(200);
 });
 
 // Set webhook with better error handling
 if (BOT_TOKEN && WEB_APP_URL) {
-  const webhookUrl = `${WEB_APP_URL}/bot${BOT_TOKEN}`;
+  const webhookUrl = `${WEB_APP_URL}/bot/${BOT_TOKEN}`;
   console.log('Setting webhook to:', webhookUrl);
   
   bot.setWebHook(webhookUrl).then(() => {
