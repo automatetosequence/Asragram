@@ -23,12 +23,22 @@ app.post(`/bot${BOT_TOKEN}`, (req, res) => {
   res.sendStatus(200);
 });
 
-// Set webhook
-bot.setWebHook(`${WEB_APP_URL}/bot${BOT_TOKEN}`).then(() => {
-  console.log('Webhook set successfully');
-}).catch((err) => {
-  console.error('Error setting webhook:', err);
-});
+// Set webhook with better error handling
+if (BOT_TOKEN && WEB_APP_URL) {
+  const webhookUrl = `${WEB_APP_URL}/bot${BOT_TOKEN}`;
+  console.log('Setting webhook to:', webhookUrl);
+  
+  bot.setWebHook(webhookUrl).then(() => {
+    console.log('✅ Webhook set successfully');
+  }).catch((err) => {
+    console.error('❌ Error setting webhook:', err.message);
+    console.error('Full error:', err);
+  });
+} else {
+  console.error('❌ Missing BOT_TOKEN or WEB_APP_URL');
+  console.log('BOT_TOKEN:', BOT_TOKEN ? 'Set' : 'Not set');
+  console.log('WEB_APP_URL:', WEB_APP_URL ? 'Set' : 'Not set');
+}
 
 // Handle /start command
 bot.onText(/\/start/, (msg) => {
